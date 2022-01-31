@@ -18,12 +18,18 @@ public class Editmain {
     public void editAction(String name, String ranks, String branch, Integer id){
         
         try {
-            switch (branch){
-                case "ITC Kuningan": direction = "itc";
-                case "ITC Mangga Dua": direction = "mangdu";
-                case "Mall Ambassador": direction = "ambassador";
-                case "BSD City": direction = "bsd";
-                case "Lippo Mall Puri": direction = "puri";
+            if(branch == "ITC Kuningan"){
+                direction = "itc";
+            }else if(branch == "ITC Mangga Dua"){
+                direction = "mangdu";
+            }else if(branch == "Mall Ambassador"){
+                direction = "ambassador";
+            }else if(branch == "BSD City"){
+                direction = "bsd";
+            }else if(branch == "Taman Anggrek"){
+                direction = "anggrek";
+            }else if(branch == "Lippo Mall Puri"){
+                direction = "puri";
             }
             
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -34,14 +40,20 @@ public class Editmain {
             while(rs.next()){
                 originbranch = rs.getString("branch");
             }
-
-            switch (branch){
-                case "ITC Kuningan": origin = "itc";
-                case "ITC Mangga Dua": origin = "mangdu";
-                case "Mall Ambassador": origin = "ambassador";
-                case "BSD City": origin = "bsd";
-                case "Lippo Mall Puri": origin = "puri";
-            }
+            
+            if(originbranch.equals("ITC Kuningan")){
+                origin = "itc";
+            }else if(originbranch.equals("ITC Mangga Dua")){
+                origin = "mangdu";
+            }else if(originbranch.equals("Mall Ambassador")){
+                origin = "ambassador";
+            }else if(originbranch.equals("BSD City")){
+                origin = "bsd";
+            }else if(originbranch.equals("Taman Anggrek")){
+                direction = "anggrek";
+            }else if(originbranch.equals("Lippo Mall Puri")){
+                direction = "puri";
+            }   
             
             Class.forName("com.mysql.cj.jdbc.Driver");
             con1 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/holly_registration","root","globe360");

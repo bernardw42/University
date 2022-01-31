@@ -26,14 +26,20 @@ public class Delete {
             while(rs.next()){
                originbranch = rs.getString("branch");
             }
-
-            switch (originbranch){
-                case "ITC Kuningan": origin = "itc";
-                case "ITC Mangga Dua": origin = "mangdu";
-                case "Mall Ambassador": origin = "ambassador";
-                case "BSD City": origin = "bsd";
-                case "Lippo Mall Puri": origin = "puri";
-            }
+            
+            if(originbranch.equals("ITC Kuningan")){
+                origin = "itc";
+            }else if(originbranch.equals("ITC Mangga Dua")){
+                origin = "mangdu";
+            }else if(originbranch.equals("Mall Ambassador")){
+                origin = "ambassador";
+            }else if(originbranch.equals("BSD City")){
+                origin = "bsd";
+            }else if(originbranch.equals("Taman Anggrek")){
+                origin = "anggrek";
+            }else if(originbranch.equals("Lippo Mall Puri")){
+                origin = "puri";
+            }   
             
             Class.forName("com.mysql.cj.jdbc.Driver");
             con1 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/holly_registration","root","globe360");
